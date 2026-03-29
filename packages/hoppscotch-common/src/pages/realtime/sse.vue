@@ -2,7 +2,7 @@
   <AppPaneLayout layout-id="sse">
     <template #primary>
       <div
-        class="sticky top-0 z-10 flex flex-shrink-0 space-x-2 overflow-x-auto bg-primary p-4"
+        class="sticky top-0 z-10 flex flex-shrink-0 space-x-3 overflow-x-auto bg-primary p-4"
       >
         <div class="sm:inline-flex flex-1 sm:space-x-2 sm:space-y-0 space-y-2">
           <div class="flex flex-1 flex-col space-y-1 sm:space-y-0 sm:flex-row">
@@ -12,7 +12,7 @@
               type="url"
               autocomplete="off"
               :class="{ error: !isUrlValid }"
-              class="flex w-full flex-1 rounded-l border border-divider bg-primaryLight px-4 py-2 text-secondaryDark"
+              class="flex w-full flex-1 rounded-l-xl border border-divider bg-primaryLight px-4 py-2.5 text-secondaryDark transition-all duration-200 focus:border-accent focus:ring-2 focus:ring-accent/20"
               :placeholder="t('sse.url')"
               :disabled="
                 connectionState === 'STARTED' || connectionState === 'STARTING'
@@ -29,7 +29,7 @@
               <input
                 id="event-type"
                 v-model="eventType"
-                class="flex w-full flex-1 rounded-r border border-divider bg-primaryLight px-4 py-2 text-secondaryDark"
+                class="flex w-full flex-1 rounded-r-xl border border-divider bg-primaryLight px-4 py-2.5 text-secondaryDark transition-all duration-200 focus:border-accent focus:ring-2 focus:ring-accent/20"
                 spellcheck="false"
                 :disabled="
                   connectionState === 'STARTED' ||

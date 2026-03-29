@@ -1,9 +1,9 @@
 <template>
   <div
-    class="sticky top-0 z-20 flex-none flex-shrink-0 bg-primary p-4 sm:flex sm:flex-shrink-0 sm:space-x-2"
+    class="sticky top-0 z-20 flex-none flex-shrink-0 bg-primary p-4 sm:flex sm:flex-shrink-0 sm:space-x-3"
   >
     <div
-      class="min-w-[12rem] flex flex-1 whitespace-nowrap rounded border border-divider"
+      class="min-w-[12rem] flex flex-1 whitespace-nowrap rounded-xl border border-divider overflow-hidden"
     >
       <div class="relative flex">
         <label for="method">
@@ -16,7 +16,7 @@
             <HoppSmartSelectWrapper>
               <input
                 id="method"
-                class="flex w-26 cursor-pointer rounded-l bg-primaryLight px-4 py-2 font-semibold text-secondaryDark transition"
+                class="flex w-26 cursor-pointer rounded-l-xl bg-primaryLight px-4 py-2.5 font-semibold text-secondaryDark transition-all duration-200"
                 :value="tab.document.request.method"
                 :readonly="!isCustomMethod"
                 :placeholder="`${t('request.method')}`"
@@ -53,7 +53,7 @@
         </label>
       </div>
       <div
-        class="flex flex-1 whitespace-nowrap rounded-r border-l border-divider bg-primaryLight transition"
+        class="flex flex-1 whitespace-nowrap rounded-r-xl border-l border-divider bg-primaryLight transition-all duration-200"
       >
         <SmartEnvInput
           ref="urlInput"
@@ -75,7 +75,7 @@
         :label="`${
           !isTabResponseLoading ? t('action.send') : t('action.cancel')
         }`"
-        class="min-w-[5rem] flex-1 rounded-r-none"
+        class="min-w-[5rem] flex-1 rounded-r-none rounded-l-xl shadow-lg shadow-accent/20"
         @click="!isTabResponseLoading ? newSendRequest() : cancelRequest()"
       />
       <span class="flex">
@@ -90,7 +90,7 @@
             :title="t('app.options')"
             :icon="IconChevronDown"
             filled
-            class="rounded-l-none"
+            class="rounded-l-none rounded-r-xl"
           />
           <template #content="{ hide }">
             <div
@@ -142,7 +142,7 @@
           </template>
         </tippy>
       </span>
-      <span class="ml-2 flex rounded border border-divider transition">
+      <span class="ml-2 flex rounded-xl border border-divider transition-all duration-200 overflow-hidden">
         <HoppButtonSecondary
           v-tippy="{ theme: 'tooltip', delay: [500, 20], allowHTML: true }"
           :title="`${t(
@@ -151,7 +151,7 @@
           :label="COLUMN_LAYOUT ? `${t('request.save')}` : ''"
           filled
           :icon="IconSave"
-          class="flex-1 rounded rounded-r-none"
+          class="flex-1 rounded-l-xl rounded-r-none"
           @click="saveRequest()"
         />
         <span class="flex">
@@ -166,7 +166,7 @@
               :title="t('app.options')"
               :icon="IconChevronDown"
               filled
-              class="rounded rounded-l-none"
+              class="rounded-r-xl rounded-l-none"
             />
             <template #content="{ hide }">
               <div

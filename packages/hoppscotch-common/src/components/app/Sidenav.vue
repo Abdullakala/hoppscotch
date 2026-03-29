@@ -1,6 +1,6 @@
 <template>
   <aside class="flex h-full justify-between md:flex-col">
-    <nav class="flex flex-1 flex-nowrap bg-primary md:flex-none md:flex-col">
+    <nav class="flex flex-1 flex-nowrap bg-primaryDark md:flex-none md:flex-col md:gap-1 md:p-1.5">
       <HoppSmartLink
         v-for="(navigation, index) in primaryNavigation"
         :key="`navigation-${index}`"
@@ -72,41 +72,38 @@ const primaryNavigation = [
 <style lang="scss" scoped>
 .nav-link {
   @apply relative;
-  @apply p-4;
+  @apply p-3;
   @apply flex flex-1 flex-col;
   @apply items-center;
   @apply justify-center;
-  @apply hover:bg-primaryDark hover:text-secondaryDark;
+  @apply text-secondary;
+  @apply rounded-xl;
+  @apply transition-all;
+  @apply duration-200;
+  @apply hover:bg-primary;
+  @apply hover:text-secondaryDark;
   @apply focus-visible:text-secondaryDark;
-  @apply after:absolute;
-  @apply after:inset-x-0;
-  @apply after:md:inset-x-auto;
-  @apply after:md:inset-y-0;
-  @apply after:bottom-0;
-  @apply after:md:bottom-auto;
-  @apply after:md:left-0;
-  @apply after:z-10;
-  @apply after:h-0.5;
-  @apply after:md:h-full;
-  @apply after:w-full;
-  @apply after:md:w-0.5;
-  @apply after:content-[""];
-  @apply focus:after:bg-divider;
 
   .svg-icons {
-    @apply opacity-75;
+    @apply opacity-60;
+    @apply transition-all;
+    @apply duration-200;
   }
 
   .nav-title {
-    @apply mt-2;
+    @apply mt-1.5;
     @apply text-tiny;
+    @apply font-medium;
+  }
+
+  &:hover .svg-icons {
+    @apply opacity-100;
   }
 
   &.router-link-active {
-    @apply text-secondaryDark;
-    @apply bg-primaryLight;
-    @apply hover:text-secondaryDark;
-    @apply after:bg-accent;
+    @apply text-accent;
+    @apply bg-accent/10;
+    @apply hover:text-accent;
 
     .svg-icons {
       @apply opacity-100;
@@ -114,13 +111,27 @@ const primaryNavigation = [
   }
 
   &.exact-active-link {
-    @apply text-secondaryDark;
-    @apply bg-primaryLight;
-    @apply hover:text-secondaryDark;
-    @apply after:bg-accent;
+    @apply text-accent;
+    @apply bg-accent/10;
+    @apply hover:text-accent;
 
     .svg-icons {
       @apply opacity-100;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .nav-link {
+    @apply p-3;
+    @apply rounded-none;
+    @apply bg-primaryDark;
+
+    &.router-link-active,
+    &.exact-active-link {
+      @apply bg-primaryDark;
+      @apply border-t-2;
+      @apply border-accent;
     }
   }
 }

@@ -23,8 +23,8 @@
         </HoppSmartPlaceholder>
         <div v-else class="space-y-8">
           <div
-            class="-mb-12 h-24 rounded bg-primaryLight md:h-32"
-            style="background-image: url(/images/cover.svg)"
+            class="-mb-12 h-24 rounded-2xl bg-primaryLight md:h-32"
+            style="background-image: url(/images/cover.svg); background-size: cover"
           ></div>
           <div class="flex flex-col justify-between space-y-8 px-4 md:flex-row">
             <div class="flex items-end">

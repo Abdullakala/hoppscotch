@@ -1,7 +1,7 @@
 <template>
   <div
     :class="{
-      'rounded border border-divider': saveRequest,
+      'rounded-xl border border-divider': saveRequest,
       'bg-primaryDark':
         draggingToRoot && currentReorderingStatus.type !== 'request',
     }"
@@ -12,7 +12,7 @@
   >
     <div
       class="sticky z-10 flex flex-shrink-0 flex-col overflow-x-auto bg-primary border-b border-dividerLight"
-      :class="{ 'rounded-t': saveRequest }"
+      :class="{ 'rounded-t-xl': saveRequest }"
       :style="
         saveRequest ? 'top: calc(-1 * var(--line-height-body))' : 'top: 0'
       "

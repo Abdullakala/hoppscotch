@@ -33,19 +33,20 @@
 
 ::-webkit-scrollbar-track {
   @apply bg-transparent;
-  @apply border-b-0 border-l border-r-0 border-t-0 border-solid border-dividerLight;
+  @apply border-none;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-divider bg-clip-content;
+  @apply bg-dividerDark bg-clip-content;
   @apply rounded-full;
   @apply border-4 border-solid border-transparent;
-  @apply hover:bg-dividerDark;
+  @apply hover:bg-secondary;
   @apply hover:bg-clip-content;
+  @apply transition-colors;
 }
 
 ::-webkit-scrollbar {
-  @apply w-4;
+  @apply w-3;
   @apply h-0;
 }
 
@@ -57,7 +58,7 @@ input::placeholder,
 textarea::placeholder,
 .cm-placeholder {
   @apply text-secondary;
-  @apply opacity-50 #{!important};
+  @apply opacity-40 #{!important};
 }
 
 input,
@@ -77,7 +78,7 @@ body {
   @apply select-none;
   @apply overflow-x-hidden;
   @apply leading-body #{!important};
-  animation: fade 300ms forwards;
+  animation: fade 400ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
 }
@@ -85,16 +86,20 @@ body {
 @keyframes fade {
   0% {
     @apply opacity-0;
+    transform: translateY(4px);
   }
 
   100% {
     @apply opacity-100;
+    transform: translateY(0);
   }
 }
 
 .fade-enter-active,
 .fade-leave-active {
   @apply transition-opacity;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .fade-enter-from,
@@ -106,6 +111,7 @@ body {
 .slide-leave-active {
   @apply transition;
   @apply duration-300;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .slide-enter-from,
@@ -117,12 +123,14 @@ body {
 .bounce-enter-active,
 .bounce-leave-active {
   @apply transition;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .bounce-enter-from,
 .bounce-leave-to {
   @apply transform;
   @apply scale-95;
+  @apply opacity-0;
 }
 
 .svg-icons {
@@ -145,10 +153,11 @@ a {
     @apply px-1 py-0.5;
     @apply -mx-1 -my-0.5;
     @apply text-accent;
-    @apply rounded;
+    @apply rounded-lg;
     @apply hover:text-accentDark;
-    @apply focus-visible:ring;
+    @apply focus-visible:ring-2;
     @apply focus-visible:ring-accent;
+    @apply focus-visible:ring-opacity-50;
     @apply focus-visible:text-accentDark;
   }
 }
@@ -169,12 +178,17 @@ hr {
 .textarea {
   @apply flex;
   @apply w-full;
-  @apply px-4 py-2;
-  @apply bg-transparent;
-  @apply rounded;
+  @apply px-4 py-2.5;
+  @apply bg-primaryLight;
+  @apply rounded-xl;
   @apply text-secondaryDark;
   @apply border border-divider;
-  @apply focus-visible:border-dividerDark;
+  @apply focus-visible:border-accent;
+  @apply focus-visible:ring-2;
+  @apply focus-visible:ring-accent;
+  @apply focus-visible:ring-opacity-20;
+  @apply transition-all;
+  @apply duration-200;
 }
 
 input,
@@ -182,11 +196,13 @@ select,
 textarea,
 button {
   @apply truncate;
-  @apply transition;
+  @apply transition-all;
+  @apply duration-200;
   @apply text-body;
   @apply leading-body;
   @apply focus:outline-none;
   @apply disabled:cursor-not-allowed;
+  @apply disabled:opacity-50;
 }
 
 .input[type="file"],
@@ -199,8 +215,9 @@ button {
   @apply absolute;
   @apply px-2 py-0.5;
   @apply m-2;
-  @apply rounded;
-  @apply transition;
+  @apply rounded-lg;
+  @apply transition-all;
+  @apply duration-200;
   @apply origin-top-left;
 }
 
@@ -214,7 +231,7 @@ button {
 }
 
 .floating-input:focus-within ~ label {
-  @apply text-secondaryDark;
+  @apply text-accent;
 }
 
 .floating-input ~ .end-actions {
@@ -248,6 +265,7 @@ pre.ace_editor {
   color: var(--status-info-color);
   &.outlined {
     border: 1px solid var(--status-info-color);
+    border-radius: 0.75rem;
   }
 }
 
@@ -255,6 +273,7 @@ pre.ace_editor {
   color: var(--status-success-color);
   &.outlined {
     border: 1px solid var(--status-success-color);
+    border-radius: 0.75rem;
   }
 }
 
@@ -262,6 +281,7 @@ pre.ace_editor {
   color: var(--status-redirect-color);
   &.outlined {
     border: 1px solid var(--status-redirect-color);
+    border-radius: 0.75rem;
   }
 }
 
@@ -269,6 +289,7 @@ pre.ace_editor {
   color: var(--status-critical-error-color);
   &.outlined {
     border: 1px solid var(--status-critical-error-color);
+    border-radius: 0.75rem;
   }
 }
 
@@ -276,6 +297,7 @@ pre.ace_editor {
   color: var(--status-server-error-color);
   &.outlined {
     border: 1px solid var(--status-server-error-color);
+    border-radius: 0.75rem;
   }
 }
 
@@ -283,6 +305,7 @@ pre.ace_editor {
   color: var(--status-missing-data-color);
   &.outlined {
     border: 1px solid var(--status-missing-data-color);
+    border-radius: 0.75rem;
   }
 }
 
@@ -292,17 +315,18 @@ pre.ace_editor {
 
   .toasted {
     &.toasted-primary {
-      @apply px-4 py-2;
+      @apply px-4 py-3;
       @apply bg-tooltip;
       @apply border-secondaryDark;
       @apply text-body text-primary;
       @apply justify-between;
-      @apply shadow-lg;
+      @apply shadow-2xl;
       @apply font-semibold;
       @apply transition;
       @apply leading-body;
-      @apply sm:rounded;
+      @apply rounded-2xl;
       @apply sm:border;
+      backdrop-filter: blur(20px);
 
       .action {
         @apply relative;
@@ -315,7 +339,7 @@ pre.ace_editor {
         @apply font-semibold;
         @apply leading-body;
         @apply tracking-normal;
-        @apply rounded;
+        @apply rounded-xl;
         @apply last:ml-4;
         @apply sm:ml-8;
         @apply before:absolute;
@@ -324,6 +348,7 @@ pre.ace_editor {
         @apply before:inset-0;
         @apply before:transition;
         @apply before:content-[''];
+        @apply before:rounded-xl;
         @apply hover:no-underline;
         @apply hover:before:opacity-20;
       }
@@ -358,12 +383,13 @@ pre.ace_editor {
   @apply relative;
   @apply before:absolute;
   @apply before:inset-0;
-  @apply before:bg-accentLight;
+  @apply before:bg-accent;
   @apply before:opacity-0;
   @apply before:z-20;
   @apply before:transition;
   @apply before:content-[''];
-  @apply hover:before:opacity-100;
+  @apply hover:before:opacity-60;
+  @apply before:rounded-full;
 }
 
 .no-splitter .splitpanes__splitter {
@@ -371,7 +397,7 @@ pre.ace_editor {
 }
 
 .smart-splitter.splitpanes--vertical > .splitpanes__splitter {
-  @apply w-0;
+  @apply w-[3px];
   @apply before:-left-0.5;
   @apply before:-right-0.5;
   @apply before:h-full;
@@ -379,7 +405,7 @@ pre.ace_editor {
 }
 
 .smart-splitter.splitpanes--horizontal > .splitpanes__splitter {
-  @apply h-0;
+  @apply h-[3px];
   @apply before:-top-0.5;
   @apply before:-bottom-0.5;
   @apply before:w-full;
@@ -439,12 +465,12 @@ pre.ace_editor {
   @apply inline-flex;
   @apply font-sans;
   @apply text-tiny;
-  @apply bg-dividerLight;
-  @apply rounded;
+  @apply bg-primaryDark;
+  @apply rounded-lg;
   @apply ml-2;
-  @apply px-0.5;
-  @apply min-w-[1rem];
-  @apply min-h-[1rem];
+  @apply px-1;
+  @apply min-w-[1.125rem];
+  @apply min-h-[1.125rem];
   @apply leading-none;
   @apply items-center;
   @apply justify-center;
@@ -484,6 +510,7 @@ details[open] summary .indicator {
 .predefined-variable-highlight {
   // forcing the text colour to be white inside a highlighted environment variable and predefined variable
   @apply text-accentContrast #{!important};
+  @apply rounded;
   span {
     @apply text-accentContrast #{!important};
   }
@@ -538,6 +565,8 @@ details[open] summary .indicator {
 
 #nprogress .bar {
   @apply bg-accent #{!important};
+  @apply h-1 #{!important};
+  @apply rounded-full #{!important};
 }
 
 .color-picker[type="color"] {
@@ -545,12 +574,12 @@ details[open] summary .indicator {
 }
 
 .color-picker[type="color"]::-webkit-color-swatch-wrapper {
-  @apply rounded;
+  @apply rounded-xl;
   @apply p-0;
 }
 
 .color-picker[type="color"]::-webkit-color-swatch {
-  @apply rounded;
+  @apply rounded-xl;
   @apply border-0;
 }
 

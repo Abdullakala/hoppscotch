@@ -10,7 +10,7 @@
   }
 
   .tippy-box[data-theme~="tooltip"] {
-    @apply rounded;
+    @apply rounded-xl;
 
     .env-tooltip-content {
       @apply flex-col;
@@ -39,7 +39,7 @@
       @apply flex;
       @apply text-tiny;
       @apply font-semibold;
-      @apply px-2 py-1;
+      @apply px-3 py-1.5;
       @apply truncate;
       @apply leading-body;
       @apply items-center;
@@ -47,7 +47,7 @@
       kbd {
         @apply hidden;
         @apply font-sans;
-        @apply rounded-sm;
+        @apply rounded-lg;
         @apply px-1;
         @apply my-0 ml-1;
         @apply truncate;
@@ -67,8 +67,9 @@
   .tippy-box[data-theme~="popover"] {
     @apply bg-popover;
     @apply border-solid;
-    @apply rounded;
+    @apply rounded-xl;
     @apply max-w-[45vw] #{!important};
+    backdrop-filter: blur(20px);
 
     .tippy-content {
       @apply flex flex-col;
@@ -118,13 +119,13 @@
   .tippy-box[data-theme~="tooltip"] {
     @apply bg-popover;
     @apply border-solid border-dividerDark;
-    @apply shadow;
+    @apply shadow-lg;
 
     .tippy-content {
       @apply text-secondary;
 
       kbd {
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: rgba(0, 0, 0, 0.08);
         @apply text-secondaryDark;
       }
     }
@@ -142,7 +143,7 @@
 
   .tippy-box[data-theme~="popover"] {
     @apply border-dividerDark;
-    @apply shadow-lg;
+    @apply shadow-2xl;
 
     .tippy-svg-arrow {
       svg:first-child {
@@ -165,13 +166,13 @@
   .tippy-box[data-theme~="tooltip"] {
     @apply bg-primaryDark;
     @apply border-solid;
-    @apply shadow-lg;
+    @apply shadow-2xl;
 
     .tippy-content {
       @apply text-secondary;
 
       kbd {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(255, 255, 255, 0.08);
         @apply text-secondary;
       }
     }
@@ -189,7 +190,7 @@
 
   .tippy-box[data-theme~="popover"] {
     @apply border-divider;
-    @apply shadow-xl;
+    @apply shadow-2xl;
 
     .tippy-svg-arrow {
       svg:first-child {
@@ -212,13 +213,13 @@
   .tippy-box[data-theme~="tooltip"] {
     @apply bg-primaryLight;
     @apply border-solid border-[#33363d];
-    @apply shadow-lg;
+    @apply shadow-2xl;
 
     .tippy-content {
       @apply text-secondary;
 
       kbd {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(255, 255, 255, 0.08);
         @apply text-secondary;
       }
     }
@@ -236,7 +237,7 @@
 
   .tippy-box[data-theme~="popover"] {
     @apply border-divider;
-    @apply shadow-xl;
+    @apply shadow-2xl;
 
     .tippy-svg-arrow {
       svg:first-child {

@@ -2,14 +2,14 @@
   <AppPaneLayout layout-id="websocket">
     <template #primary>
       <div
-        class="sticky top-0 z-10 flex flex-shrink-0 space-x-2 overflow-x-auto bg-primary p-4"
+        class="sticky top-0 z-10 flex flex-shrink-0 space-x-3 overflow-x-auto bg-primary p-4"
       >
         <HoppSmartInput
           v-model="url"
           type="url"
           :autofocus="false"
           styles="!inline-flex flex-1 space-x-2"
-          input-styles="w-full px-4 py-2 border rounded !bg-primaryLight border-divider text-secondaryDark"
+          input-styles="w-full px-4 py-2.5 border rounded-xl !bg-primaryLight border-divider text-secondaryDark transition-all duration-200 focus:border-accent focus:ring-2 focus:ring-accent/20"
           :placeholder="`${t('websocket.url')}`"
           :disabled="
             connectionState === 'CONNECTED' || connectionState === 'CONNECTING'
@@ -20,7 +20,7 @@
             <HoppButtonPrimary
               id="connect"
               :disabled="!isUrlValid"
-              class="w-32"
+              class="w-32 rounded-xl shadow-lg shadow-accent/20"
               name="connect"
               :label="
                 connectionState === 'CONNECTING'

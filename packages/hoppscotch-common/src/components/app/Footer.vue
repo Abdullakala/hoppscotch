@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="flex justify-between bg-primary">
-      <div class="flex">
+    <div class="flex justify-between bg-primaryDark">
+      <div class="flex items-center gap-0.5 p-1">
         <HoppButtonSecondary
           v-tippy="{ theme: 'tooltip' }"
           :title="EXPAND_NAVIGATION ? t('hide.sidebar') : t('show.sidebar')"
           :icon="IconSidebar"
-          class="transform"
+          class="transform rounded-xl transition-transform duration-200"
           :class="{ '-rotate-180': !EXPAND_NAVIGATION }"
           @click="EXPAND_NAVIGATION = !EXPAND_NAVIGATION"
         />
@@ -15,6 +15,7 @@
             v-tippy="{ theme: 'tooltip' }"
             :title="t('settings.interceptor')"
             :icon="IconShieldCheck"
+            class="rounded-xl"
           />
           <template #content>
             <AppKernelInterceptor />
@@ -24,10 +25,11 @@
           v-if="platform.platformFeatureFlags.cookiesEnabled ?? false"
           :label="t('app.cookies')"
           :icon="IconCookie"
+          class="rounded-xl"
           @click="showCookiesModal = true"
         />
       </div>
-      <div class="flex">
+      <div class="flex items-center gap-0.5 p-1">
         <tippy
           interactive
           trigger="click"
@@ -36,7 +38,7 @@
         >
           <HoppButtonSecondary
             :icon="IconHelpCircle"
-            class="!rounded-none"
+            class="rounded-xl"
             :label="`${t('app.help')}`"
           />
           <template #content="{ hide }">
@@ -129,7 +131,7 @@
                 @click="hide()"
               />
               <div
-                class="flex px-4 py-2 opacity-50"
+                class="flex px-4 py-2 opacity-40 text-tiny"
                 @dblclick="
                   () => {
                     showDeveloperOptionModal()
@@ -148,6 +150,7 @@
             'app.shortcuts'
           )} <kbd>${getSpecialKey()}</kbd><kbd>/</kbd>`"
           :icon="IconZap"
+          class="rounded-xl"
           @click="invokeAction('flyouts.keybinds.toggle')"
         />
         <HoppButtonSecondary
@@ -155,18 +158,19 @@
           v-tippy="{ theme: 'tooltip' }"
           :icon="IconShare2"
           :title="t('request.share')"
+          class="rounded-xl"
           @click="nativeShare()"
         />
         <HoppButtonSecondary
           v-tippy="{ theme: 'tooltip' }"
           :title="COLUMN_LAYOUT ? t('layout.row') : t('layout.column')"
           :icon="IconColumns"
-          class="transform"
+          class="transform rounded-xl transition-transform duration-200"
           :class="{ 'rotate-90': !COLUMN_LAYOUT }"
           @click="COLUMN_LAYOUT = !COLUMN_LAYOUT"
         />
         <span
-          class="transform transition"
+          class="transform transition-transform duration-200"
           :class="{
             'rotate-180': SIDEBAR_ON_LEFT,
           }"
@@ -175,7 +179,7 @@
             v-tippy="{ theme: 'tooltip' }"
             :title="SIDEBAR ? t('hide.sidebar') : t('show.sidebar')"
             :icon="IconSidebarOpen"
-            class="transform"
+            class="transform rounded-xl transition-transform duration-200"
             :class="{ 'rotate-180': !SIDEBAR }"
             @click="SIDEBAR = !SIDEBAR"
           />
@@ -240,7 +244,7 @@ const nativeShare = () => {
     navigator
       .share({
         title: "Hoppscotch",
-        text: "Hoppscotch • Open source API development ecosystem - Helps you create requests faster, saving precious time on development.",
+        text: "Hoppscotch - Open source API development ecosystem - Helps you create requests faster, saving precious time on development.",
         url: "https://hoppscotch.io",
       })
       .catch(console.error)

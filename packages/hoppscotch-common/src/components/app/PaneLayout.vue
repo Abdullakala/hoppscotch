@@ -39,7 +39,7 @@
     <Pane
       :size="SIDEBAR && hasSidebar ? PANE_SIDEBAR_SIZE : 0"
       :min-size="25"
-      class="flex flex-col !overflow-auto bg-primaryContrast"
+      class="flex flex-col !overflow-auto bg-primaryContrast border-l border-divider"
     >
       <slot name="sidebar" />
     </Pane>

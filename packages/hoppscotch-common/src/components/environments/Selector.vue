@@ -34,7 +34,7 @@
             v-model="filterText"
             :placeholder="`${t('action.search')}`"
             :context-menu-enabled="false"
-            class="border border-dividerDark focus:border-primaryDark rounded"
+            class="border border-dividerDark focus:border-accent rounded-xl"
           />
           <HoppSmartItem
             v-if="!isScopeSelector"

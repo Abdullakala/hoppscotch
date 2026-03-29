@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex justify-between border-b border-dividerLight px-4 py-2 text-tiny text-secondaryLight"
+    class="flex justify-between border-b border-dividerLight px-4 py-2.5 text-tiny text-secondaryLight font-medium uppercase tracking-wider"
   >
     <div class="flex items-center overflow-x-auto whitespace-nowrap">
       <span class="truncate">

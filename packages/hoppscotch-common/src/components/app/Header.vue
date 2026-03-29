@@ -3,7 +3,7 @@
     <header
       ref="headerRef"
       data-tauri-drag-region
-      class="grid grid-cols-5 grid-rows-1 gap-2 overflow-x-auto overflow-y-hidden p-2"
+      class="grid grid-cols-5 grid-rows-1 gap-3 overflow-x-auto overflow-y-hidden bg-primaryDark px-3 py-2"
     >
       <div
         data-tauri-drag-region
@@ -13,7 +13,7 @@
           paddingLeft: platform.ui?.appHeader?.paddingLeft?.value,
         }"
       >
-        <div class="flex">
+        <div class="flex items-center">
           <!-- Unified Switcher (orgs + instances in one dropdown) -->
           <tippy
             v-if="
@@ -27,7 +27,7 @@
             :on-create="onSwitcherCreate"
           >
             <HoppButtonSecondary
-              class="!font-bold uppercase tracking-wide !text-secondaryDark hover:bg-primaryDark focus-visible:bg-primaryDark"
+              class="!font-bold uppercase tracking-widest !text-secondaryDark hover:!text-accent focus-visible:!text-accent rounded-xl !bg-transparent hover:!bg-primaryLight"
               :label="t('app.name')"
               :icon="IconChevronDown"
               reverse
@@ -58,7 +58,7 @@
 
           <HoppButtonSecondary
             v-else
-            class="!font-bold uppercase tracking-wide !text-secondaryDark hover:bg-primaryDark focus-visible:bg-primaryDark"
+            class="!font-bold uppercase tracking-widest !text-secondaryDark hover:!text-accent focus-visible:!text-accent rounded-xl !bg-transparent hover:!bg-primaryLight"
             :label="t('app.name')"
             to="/"
           />
@@ -74,7 +74,7 @@
         data-tauri-drag-region
         class="col-span-2 flex items-center justify-between space-x-2"
       >
-        <div class="flex">
+        <div class="flex items-center gap-1">
           <tippy
             v-if="
               kernelMode === 'web' &&
@@ -88,7 +88,7 @@
           >
             <HoppButtonSecondary
               :icon="IconDownload"
-              class="rounded hover:bg-primaryDark focus-visible:bg-primaryDark"
+              class="rounded-xl hover:bg-primaryLight focus-visible:bg-primaryLight"
             />
             <template #content="{ hide }">
               <div
@@ -103,7 +103,7 @@
                     :icon="link.icon"
                     :label="link.text(t)"
                     :blank="true"
-                    class="rounded hover:bg-primaryDark focus-visible:bg-primaryDark justify-between"
+                    class="rounded-xl hover:bg-primaryDark focus-visible:bg-primaryDark justify-between"
                     :to="
                       link.action.type === 'link' ? link.action.href : undefined
                     "
@@ -122,12 +122,12 @@
               mdAndLarger ? t('support.title') : t('app.options')
             } <kbd>?</kbd>`"
             :icon="IconLifeBuoy"
-            class="rounded hover:bg-primaryDark focus-visible:bg-primaryDark"
+            class="rounded-xl hover:bg-primaryLight focus-visible:bg-primaryLight"
             @click="invokeAction('modals.support.toggle')"
           />
         </div>
         <div
-          class="flex"
+          class="flex items-center"
           :class="{
             'flex-row-reverse gap-2':
               workspaceSelectorFlagEnabled && !currentUser,
@@ -141,12 +141,12 @@
               v-if="!workspaceSelectorFlagEnabled"
               :icon="IconUploadCloud"
               :label="t('header.save_workspace')"
-              class="!focus-visible:text-emerald-600 !hover:text-emerald-600 hidden h-8 border border-emerald-600/25 bg-emerald-500/10 !text-emerald-500 hover:border-emerald-600/20 hover:bg-emerald-600/20 focus-visible:border-emerald-600/20 focus-visible:bg-emerald-600/20 md:flex"
+              class="!focus-visible:text-emerald-600 !hover:text-emerald-600 hidden h-9 rounded-xl border border-emerald-600/25 bg-emerald-500/10 !text-emerald-500 hover:border-emerald-600/20 hover:bg-emerald-600/20 focus-visible:border-emerald-600/20 focus-visible:bg-emerald-600/20 md:flex"
               @click="invokeAction('modals.login.toggle')"
             />
             <HoppButtonPrimary
               :label="t('header.login')"
-              class="h-8"
+              class="h-9 rounded-xl shadow-lg shadow-accent/20"
               @click="invokeAction('modals.login.toggle')"
             />
           </div>
@@ -167,14 +167,13 @@
             class="inline-flex items-center space-x-2"
           >
             <div
-              class="flex h-8 divide-x divide-emerald-600/25 rounded border border-emerald-600/25 bg-emerald-500/10 focus-within:divide-emerald-600/20 focus-within:border-emerald-600/20 focus-within:bg-emerald-600/20 hover:divide-emerald-600/20 hover:border-emerald-600/20 hover:bg-emerald-600/20"
+              class="flex h-9 divide-x divide-emerald-600/25 rounded-xl border border-emerald-600/25 bg-emerald-500/10 focus-within:divide-emerald-600/20 focus-within:border-emerald-600/20 focus-within:bg-emerald-600/20 hover:divide-emerald-600/20 hover:border-emerald-600/20 hover:bg-emerald-600/20 transition-all duration-200"
             >
               <HoppButtonSecondary
                 v-tippy="{ theme: 'tooltip' }"
                 :title="t('team.invite_tooltip')"
                 :icon="IconUserPlus"
-                class="!focus-visible:text-emerald-600 !hover:text-emerald-600 !text-emerald-500"
-                @click="handleInvite()"
+                class="!focus-visible:text-emerald-600 !hover:text-emerald-600 !text-emerald-500 rounded-l-xl"
               />
               <HoppButtonSecondary
                 v-if="
@@ -186,7 +185,7 @@
                 v-tippy="{ theme: 'tooltip' }"
                 :title="t('team.edit')"
                 :icon="IconSettings"
-                class="!focus-visible:text-emerald-600 !hover:text-emerald-600 !text-emerald-500"
+                class="!focus-visible:text-emerald-600 !hover:text-emerald-600 !text-emerald-500 rounded-r-xl"
                 @click="handleTeamEdit()"
               />
             </div>
@@ -204,7 +203,7 @@
                   :title="t('workspace.change')"
                   :label="mdAndLarger ? workspaceName : ``"
                   :icon="workspace.type === 'personal' ? IconUser : IconUsers"
-                  class="!focus-visible:text-blue-600 !hover:text-blue-600 h-8 rounded border border-blue-600/25 bg-blue-500/10 pr-8 !text-blue-500 hover:border-blue-600/20 hover:bg-blue-600/20 focus-visible:border-blue-600/20 focus-visible:bg-blue-600/20"
+                  class="!focus-visible:text-blue-600 !hover:text-blue-600 h-9 rounded-xl border border-blue-600/25 bg-blue-500/10 pr-8 !text-blue-500 hover:border-blue-600/20 hover:bg-blue-600/20 focus-visible:border-blue-600/20 focus-visible:bg-blue-600/20 transition-all duration-200"
                 />
               </HoppSmartSelectWrapper>
               <template #content="{ hide, state }">
@@ -219,7 +218,7 @@
                 </div>
               </template>
             </tippy>
-            <span v-if="currentUser" class="px-2">
+            <span v-if="currentUser" class="px-1">
               <tippy
                 interactive
                 trigger="click"
@@ -252,8 +251,8 @@
                     @keyup.l="logout.$el.click()"
                     @keyup.escape="hide()"
                   >
-                    <div class="flex flex-col px-2">
-                      <span class="inline-flex truncate font-semibold">
+                    <div class="flex flex-col px-2 py-1">
+                      <span class="inline-flex truncate font-semibold text-secondaryDark">
                         {{
                           currentUser.displayName ||
                           t("profile.default_hopp_displayname")

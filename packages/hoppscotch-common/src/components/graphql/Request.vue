@@ -1,6 +1,6 @@
 <template>
   <div
-    class="sticky top-0 z-10 flex flex-shrink-0 space-x-2 overflow-x-auto bg-primary p-4"
+    class="sticky top-0 z-10 flex flex-shrink-0 space-x-3 overflow-x-auto bg-primary p-4"
   >
     <div class="inline-flex flex-1 space-x-2">
       <input
@@ -9,7 +9,7 @@
         type="url"
         autocomplete="off"
         spellcheck="false"
-        class="w-full rounded border border-divider bg-primaryLight px-4 py-2 text-secondaryDark"
+        class="w-full rounded-xl border border-divider bg-primaryLight px-4 py-2.5 text-secondaryDark transition-all duration-200 focus:border-accent focus:ring-2 focus:ring-accent/20"
         :placeholder="`${t('graphql.url_placeholder')}`"
         :disabled="connected"
         @keyup.enter="onConnectClick"
@@ -19,7 +19,7 @@
         name="get"
         :loading="connection.state === 'CONNECTING'"
         :label="!connected ? t('action.connect') : t('action.disconnect')"
-        class="w-32"
+        class="w-32 rounded-xl shadow-lg shadow-accent/20"
         @click="onConnectClick"
       />
     </div>

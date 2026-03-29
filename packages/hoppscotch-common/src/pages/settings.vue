@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="container divide-y divide-dividerLight">
-      <div class="md:grid md:grid-cols-3 md:gap-4">
+      <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="p-8 md:col-span-1">
           <h3 class="heading">
             {{ t("settings.general") }}
           </h3>
-          <p class="my-1 text-secondaryLight">
+          <p class="my-2 text-secondaryLight">
             {{ t("settings.general_description") }}
           </p>
         </div>
@@ -187,12 +187,12 @@
         </div>
       </div>
 
-      <div class="md:grid md:grid-cols-3 md:gap-4">
+      <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="p-8 md:col-span-1">
           <h3 class="heading">
             {{ t("settings.theme") }}
           </h3>
-          <p class="my-1 text-secondaryLight">
+          <p class="my-2 text-secondaryLight">
             {{ t("settings.theme_description") }}
           </p>
         </div>

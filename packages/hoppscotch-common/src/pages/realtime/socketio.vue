@@ -2,7 +2,7 @@
   <AppPaneLayout layout-id="socketio">
     <template #primary>
       <div
-        class="sticky top-0 z-10 flex flex-shrink-0 space-x-2 overflow-x-auto bg-primary p-4"
+        class="sticky top-0 z-10 flex flex-shrink-0 space-x-3 overflow-x-auto bg-primary p-4"
       >
         <div class="sm:inline-flex flex-1 sm:space-x-2 sm:space-y-0 space-y-2">
           <div class="flex flex-1 sm:flex-row flex-col sm:space-y-0 space-y-2">
@@ -19,7 +19,7 @@
                     id="client-version"
                     v-tippy="{ theme: 'tooltip' }"
                     title="socket.io-client version"
-                    class="flex sm:w-26 flex-1 cursor-pointer rounded-l border border-divider bg-primaryLight px-4 py-2 font-semibold text-secondaryDark"
+                    class="flex sm:w-26 flex-1 cursor-pointer rounded-l-xl border border-divider bg-primaryLight px-4 py-2.5 font-semibold text-secondaryDark transition-all duration-200"
                     :value="`Client ${clientVersion}`"
                     readonly
                     :disabled="

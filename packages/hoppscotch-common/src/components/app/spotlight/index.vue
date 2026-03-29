@@ -16,7 +16,7 @@
             autocomplete="off"
             name="command"
             :placeholder="`${t('app.type_a_command_search')}`"
-            class="flex flex-1 bg-transparent px-6 pt-5 pb-3 text-base text-secondaryDark"
+            class="flex flex-1 bg-transparent px-6 pt-6 pb-4 text-base text-secondaryDark placeholder:text-secondary/40"
           />
           <HoppSmartSpinner v-if="searchSession?.loading" class="mr-6" />
         </div>
@@ -31,7 +31,7 @@
           class="flex flex-col"
         >
           <h5
-            class="sticky top-0 z-10 bg-primaryContrast px-6 py-2 text-secondaryLight"
+            class="sticky top-0 z-10 bg-primaryContrast/80 backdrop-blur-md px-6 py-2.5 text-secondaryLight font-medium text-tiny uppercase tracking-wider"
           >
             {{ sectionResult.title }}
           </h5>
